@@ -4,11 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.learn.classPortal.entity.Event;
-import com.learn.classPortal.projection.EventProjection;
+import com.learn.classPortal.entity.Slot;
+import com.learn.classPortal.projection.SlotProjection;
 
 @CrossOrigin
-@RepositoryRestResource(path = "event" , excerptProjection = EventProjection.class)
-public interface EventRepository extends JpaRepository<Event, Integer> {
+@RepositoryRestResource(path = "slot",excerptProjection = SlotProjection.class)
+public interface SlotRepository extends JpaRepository<Slot, Integer> {
 
 }

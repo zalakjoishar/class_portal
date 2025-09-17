@@ -2,7 +2,7 @@ package com.learn.classPortal.entity;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,9 +22,9 @@ public class ClassRoom {
 	@Column(nullable = false,length=20)
 	private String name;
 	@OneToMany(mappedBy = "classRoom")
-	@JsonBackReference
+	@JsonIgnore
 	private List<Batch> batch;
 	@OneToMany(mappedBy = "classRoom")
-	@JsonBackReference
+	@JsonIgnore
 	private List<Slot> slot;
 }

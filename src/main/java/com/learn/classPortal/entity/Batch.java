@@ -3,7 +3,7 @@ package com.learn.classPortal.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,29 +21,40 @@ import lombok.NoArgsConstructor;
 public class Batch {
 	@Id
 	private int id;
-	@Column(nullable = false,length=20)
+
+	@Column(nullable = false, length = 20)
 	private String name;
-	private String day;
-	@Column(nullable = false,length=20)
+
+	@Column(nullable = false, length = 20)
 	private String certification;
-	@Column(nullable = false,length=20)
+
+	@Column(nullable = false, length = 20)
 	private String genre;
+
 	@ManyToOne
-	@JsonManagedReference
+	@JsonIgnore
 	private ClassRoom classRoom;
+
 	@ManyToOne
-	@JsonManagedReference
+	@JsonIgnore
 	private Trainer trainer;
+
 	@ManyToOne
-	@JsonManagedReference
+	@JsonIgnore
 	private Coordinator coordinator;
+
 	@OneToMany(mappedBy = "batch")
-	@JsonBackReference
+	@JsonBackReference("student-batch")
+	@JsonIgnore
 	private List<Student> student;
+
 	@OneToMany(mappedBy = "batch")
-	@JsonBackReference
+	@JsonBackReference("event-batch")
+	@JsonIgnore
 	private List<Event> event;
+
 	@OneToMany(mappedBy = "batch")
-	@JsonBackReference
+	@JsonBackReference("slot-batch")
+	@JsonIgnore
 	private List<Slot> slot;
 }

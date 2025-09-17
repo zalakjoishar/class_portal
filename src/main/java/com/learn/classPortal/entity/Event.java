@@ -2,7 +2,7 @@ package com.learn.classPortal.entity;
 
 import java.sql.Date;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,8 +22,9 @@ public class Event {
 	@Column(nullable = false,length=20)
 	private String name;
 	private Date date;
+	//yyyy-mm/dd
 	private String location;
 	@ManyToOne
-	@JsonBackReference
+	@JsonIgnore
 	private Batch batch;
 }
